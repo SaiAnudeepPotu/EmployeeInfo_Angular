@@ -1,0 +1,98 @@
+<form [formGroup]="employeeform" novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" formControlName="id" name="id" [value]="service.formData.id" />
+    <div class="form-group">
+      <label>First Name : </label>
+      <input
+        class="form-control"
+        formControlName="firstname"
+        name="firstname"
+        #firstname="ngModel"
+        [(ngModel)]="service.formData.firstname"
+        required      
+      />
+      <div
+        *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        class="alert alert-danger  input-invalid"
+      >
+        <div *ngIf="firstname.invalid">First Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Last Name : </label>
+      <input
+        class="form-control"
+        formControlName="lastname"
+        name="lastname"
+        #lastname="ngModel"
+        [(ngModel)]="service.formData.lastname"
+        required
+       
+      />
+      <div
+        *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+        class="alert alert-danger  input-invalid"
+      >
+        <div *ngIf="lastname.invalid">Last Name is required.</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>Email : </label>
+        <input
+          class="form-control"
+          formControlName="email"
+          name="email"
+          #email="ngModel"
+          [(ngModel)]="service.formData.email"
+          required
+        />
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger  input-invalid"
+        >
+          <div *ngIf="email.invalid">Email is required.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Address : </label>
+        <input
+          class="form-control"
+          formControlName="address"
+          name="address"
+          #address="ngModel"
+          [(ngModel)]="service.formData.address"
+          required
+        />
+        <div
+          *ngIf="address.invalid && (address.dirty || address.touched)"
+          class="alert alert-danger  input-invalid"
+        >
+          <div *ngIf="address.invalid">Address is required.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Phone : </label>
+        <input
+          class="form-control"
+          formControlName="phone"
+          name="phone"
+          #phone="ngModel"
+          [(ngModel)]="service.formData.phone"
+          maxlength="10"
+          minlength="10"
+          required
+        />
+        <div
+          *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+          class="alert alert-danger  input-invalid"
+        >
+          <div *ngIf="phone.invalid">Phone Number is required.</div>
+          
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-info" type="submit" [disabled]="form.invalid">
+      SUBMIT
+    </button>
+  </form>
+  
